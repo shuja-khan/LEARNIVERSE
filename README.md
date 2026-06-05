@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Learniverse 🌌
 
-## Getting Started
+> **AI-powered learning community. Real community. Zero limits.**
 
-First, run the development server:
+## 📖 Project Overview
 
+Learniverse is a **premium learning community platform** combining AI tutoring, gamified XP, real-time chat, curated courses, and a jobs board.
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS + Custom CSS Animations
+- **Auth + DB**: Firebase (Auth, Firestore, Realtime Database)
+- **AI**: Google Gemini API (gemini-1.5-flash)
+- **Fonts**: Syne + DM Sans + JetBrains Mono
+
+## 🚀 Setup
+
+### 1. Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure `.env.local`
+```env
+NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key_here
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id_here
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=https://your_project_id-default-rtdb.firebaseio.com
+NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id_here
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Run dev server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Getting API Keys
 
-## Learn More
+### Gemini API Key
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Click **"Create API Key"**
 
-To learn more about Next.js, take a look at the following resources:
+### Firebase Config
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a project → Enable Auth (Email + Google) → Create Firestore + Realtime DB
+3. Project Settings → Your Apps → Web → Copy config
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Deploy to Vercel
+```bash
+npm install -g vercel
+vercel
+```
+Add environment variables in Vercel dashboard → redeploy.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Features
+- 🤖 Gemini AI Tutor with typewriter + voice mode
+- 🏆 XP & Badge System (Beginner → Explorer → Pro → Master)
+- 💬 Firebase Realtime Community Chat
+- 📚 12 Curated Courses with category filter
+- 💼 10 Job Listings with search + filter
+- ⭐ Premium Channel (unlocks at 500 XP)
+- 💡 Motivational quotes every 5 minutes
+- 🎯 3-step onboarding wizard
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ for learners everywhere.
