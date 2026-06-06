@@ -26,6 +26,7 @@ export default function AITutor({ userProfile, onXPGain }) {
   const bottomRef = useRef(null);
   const recognitionRef = useRef(null);
   const inputRef = useRef(null);
+  const finalTranscriptRef = useRef('');
 
   useEffect(() => {
     setVoiceSupported('webkitSpeechRecognition' in window || 'SpeechRecognition' in window);
@@ -93,23 +94,36 @@ export default function AITutor({ userProfile, onXPGain }) {
     recognition.interimResults = true;
     recognition.lang = 'en-US';
     recognitionRef.current = recognition;
+    finalTranscriptRef.current = '';
 
-    let silenceTimer;
     recognition.onresult = (e) => {
-      const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
-      setInput(transcript);
-      clearTimeout(silenceTimer);
-      if (e.results[0].isFinal) {
-        silenceTimer = setTimeout(() => {
-          recognition.stop();
-        }, 1500);
+      let interimTranscript = '';
+      let finalTranscript = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const transcript = e.results[i][0].transcript;
+        if (e.results[i].isFinal) {
+          finalTranscript += transcript;
+        } else {
+          interimTranscript += transcript;
+        }
       }
+      if (finalTranscript) {
+        finalTranscriptRef.current += finalTranscript;
+      }
+      setInput(finalTranscriptRef.current + interimTranscript);
     };
     recognition.onend = () => {
       setIsListening(false);
-      if (inputRef.current?.value) sendMessage(inputRef.current.value);
+      const textToSend = finalTranscriptRef.current.trim();
+      if (textToSend) {
+        sendMessage(textToSend);
+        finalTranscriptRef.current = '';
+      }
     };
-    recognition.onerror = () => setIsListening(false);
+    recognition.onerror = (e) => {
+      console.error('Speech recognition error:', e.error);
+      setIsListening(false);
+    };
     recognition.start();
     setIsListening(true);
   }
