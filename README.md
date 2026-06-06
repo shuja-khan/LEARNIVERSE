@@ -21,16 +21,6 @@ Learniverse is a **premium learning community platform** combining AI tutoring, 
 npm install
 ```
 
-### 2. Configure `.env.local`
-```env
-NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
-NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key_here
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id_here
-NEXT_PUBLIC_FIREBASE_DATABASE_URL=https://your_project_id-default-rtdb.firebaseio.com
-NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id_here
-```
-
 ### 3. Run dev server
 ```bash
 npm run dev
@@ -47,11 +37,8 @@ npm run dev
 2. Create a project → Enable Auth (Email + Google) → Create Firestore + Realtime DB
 3. Project Settings → Your Apps → Web → Copy config
 
-## 🌐 Deploy to Vercel
-```bash
-npm install -g vercel
-vercel
-```
+## 🌐 Deployed to Vercel
+
 Add environment variables in Vercel dashboard → redeploy.
 
 ## ✨ Features
@@ -64,4 +51,4 @@ Add environment variables in Vercel dashboard → redeploy.
 - 💡 Motivational quotes every 5 minutes
 - 🎯 3-step onboarding wizard
 
-Built with ❤️ for learners everywhere.
+PROJECT LEARNIVERSE.
